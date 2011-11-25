@@ -1,0 +1,27 @@
+Cloudsnake Application Server
+
+Quick Overview
+
+ - CAPS (= Cloudsnake APplication Server ) is a conceptual hybrid of Python and Erlang.
+
+ - With CAPS you can execute python functions using JSON-RPC interface over HTTP.
+
+ - Python code is loaded into CAPS and compiled in realtime. CAPS compiles the code and extracts all code artifacts ( functions and classes ) and registers them to the JSON-RPC call interface.
+
+ - All artifacts can be reloaded during runtime i.e. you can fix bugs and just send the new version to the server and it is transparently switched with the older one.
+
+ - CAPS also incorporates a memory based persistent key value store that stays between function calls. You can update your code without having to re-enter all data.
+
+ - A HTTP POST interface is served to outer world with JSON-RPC.
+
+ - All code inside CAPS is sandboxed for security reasons.
+
+ - All function calls are threaded so they can be run parallel.
+
+*Super quick example*:
+
+python cloudSnake.py
+
+(using different terminal)
+python clients/add_code.py main code_examples/caps_test_funcs.py
+python clients/get_rss_feed.py
