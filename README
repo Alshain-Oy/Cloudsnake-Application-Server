@@ -6,11 +6,15 @@ Quick Overview
 
  - With CAPS you can execute python functions using JSON-RPC interface over HTTP.
 
- - Python code is loaded into CAPS and compiled in realtime. CAPS compiles the code and extracts all code artifacts ( functions and classes ) and registers them to the JSON-RPC call interface.
+ - Python code is loaded into CAPS and compiled during runtime. CAPS compiles the code 
+   and extracts all code artifacts ( functions and classes ) and registers them to 
+   the JSON-RPC call interface.
 
- - All artifacts can be reloaded during runtime i.e. you can fix bugs and just send the new version to the server and it is transparently switched with the older one.
+ - All artifacts can be reloaded during runtime i.e. you can fix bugs and just send 
+   the new version to the server and it is transparently switched with the older one.
 
- - CAPS also incorporates a memory based persistent key value store that stays between function calls. You can update your code without having to re-enter all data.
+ - CAPS also incorporates a memory based key-value store that stays between function 
+   calls. You can update your code without having to re-enter all data.
 
  - A HTTP POST interface is served to outer world with JSON-RPC.
 
@@ -18,10 +22,22 @@ Quick Overview
 
  - All function calls are threaded so they can be run parallel.
 
+
+Client side mapper
+ - Client side mapper queries the server for registered artifacts and
+   creates a python object that has all artifacts as member functions.
+   For example if you have functions init and doStuff in CAPS then you
+   can just say mapper.init() or mapper.doStuff( "foo", ["bar"] ) in
+   your own code. 
+
+See clients/ and code_examples/ folders for more examples and snippets.
+
+
 *Super quick example*:
 
-python cloudSnake.py
+$ python cloudSnake.py
 
 (using different terminal)
-python clients/add_code.py main code_examples/caps_test_funcs.py
-python clients/get_rss_feed.py
+
+$ python clients/add_code.py main code_examples/caps_test_funcs.py
+$ python clients/get_rss_feed.py
